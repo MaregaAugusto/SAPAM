@@ -1,0 +1,38 @@
+{% extends 'ancianos/base.htm' %}
+{% load crispy_forms_tags %}
+
+{% block contenido %}
+{% if messages %}
+    {% for message in messages %}
+        <div ALIGN=center class="alert alert-primary" role="alert">{{ message }}</div>
+    {% endfor %}
+{%else%}
+<section id="services" class="section-bg">
+    <div class="container">
+        <div id="row" class="row justify-content-center align-items-center" style="padding-top: 50px;">
+            <div class="col-md-6">
+                <div class="magen col-md-12">
+                    <form  method="POST">{%csrf_token%}
+                        {{ form.non_field_errors }}
+                        <h5 class="text-center" style=" background-color: #065e77; color: white; border-radius: 2px; padding: 10px;">Realizar reclamo</h5>
+
+                        <label for="asunto"></label>
+                        <input type="text" name="asunto" id="asunto" class="form-control" placeholder="Asunto">
+                        <label for="texto"></label>
+                        <textarea id="texto" name="texto" class="form-control" placeholder="Descripción"></textarea>
+                        <br>
+                        <br>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-info">Enviar</button>
+                            <a href="{% url 'servicios:listar' %}" type="button" class="btn btn-info">Cancelar</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endif %}
+
+{% endblock %}

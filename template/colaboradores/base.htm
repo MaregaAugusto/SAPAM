@@ -1,0 +1,132 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>SAPAM</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="" name="keywords">
+<meta content="" name="description">
+
+<!-- Favicons -->
+<!--
+Iconos diseñados por <a href="https://smashicons.com/" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.es/" title="Flaticon"> www.flaticon.es</a>
+Iconos diseñados por <a href="https://smashicons.com/" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.es/" title="Flaticon"> www.flaticon.es</a>
+Iconos diseñados por <a href="https://smashicons.com/" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.es/" title="Flaticon"> www.flaticon.es</a>
+-->
+<link href="{% static 'img/favicon.png' %}" rel="icon">
+<link href="{% static 'img/apple-touch.png' %}" rel="apple-touch-icon">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,500,600,700,700i|Montserrat:300,400,500,600,700" rel="stylesheet">
+
+<!-- Bootstrap CSS File -->
+<link href="{% static 'lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+<!-- Libraries CSS Files -->
+<link href="{% static 'lib/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+<link href="{% static 'lib/animate/animate.min.css' %}" rel="stylesheet">
+<link href="{% static 'lib/ionicons/css/ionicons.min.css' %}" rel="stylesheet">
+<link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+<link href="{% static 'lib/lightbox/css/lightbox.min.css' %}" rel="stylesheet">
+
+<!-- Main Stylesheet File -->
+<link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+<!-- =======================================================
+    Theme Name: Rapid
+    Theme URL: https://bootstrapmade.com/rapid-multipurpose-bootstrap-business-template/
+    Author: BootstrapMade.com
+    License: https://bootstrapmade.com/license/
+======================================================= -->
+</head>
+
+<body>
+<!--==========================
+Header
+============================-->
+<header id="header">
+    <!--
+    <div id="topbar">
+    <div class="container">
+        <div class="social-links">
+        <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+        <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+        <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+        <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+        </div>
+    </div>
+    </div>
+    -->
+
+    <div class="container">
+
+    <div class="logo float-left">
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <h1 class="text-light"><a href="{% url 'servicios:listar_ca'%}" class="scrollto"><span>SAPAM</span></a></h1>
+        <!-- <a href="#header" class="scrollto"><img src="img/logo.png" alt="" class="img-fluid"></a> -->
+    </div>
+
+    <nav class="main-nav float-right d-none d-lg-block">
+        <ul>
+        <li class="drop-down"><a href="">HOLA {{user.username | upper }}</a>
+            <ul>
+            <li><a href="{% url 'servicios:listar_cf'%}">Mis servicios</a></li>
+            <li><a href="{% url 'servicios:listarmidenuncias' %}">Reclamos</a></li>
+            <li><a href="" data-toggle="modal" data-target="#Eliminar">Darse de baja</a></li>
+            <li><a href="{% url 'colaboradores:modificar' user.id %}">Actualizar datos</a></li>
+            <li><a href="{% url 'usuarios:logout' %}">Cerrar sesión</a></li>
+            </ul>
+        </li>
+        <!-- <li><a href="#footer">Contact Us</a></li> -->
+        </ul>
+    </nav><!-- .main-nav -->
+    
+    </div>
+</header>
+
+<div class="modal" tabindex="-1" role="dialog" id="Eliminar">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                        <div class="modal-header" style="background-color: #17a2b8; color:white;">
+                            <h5 class="modal-title">Eliminar usuario</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <form action="{% url 'usuarios:eliminar' user.id %}" method="post">{%csrf_token%}
+                            <div class="modal-body">
+                                <p>¿Estás seguro que querés darte de baja?</p>
+                                
+                            </div>
+                            <div class="modal-footer">
+                                    <button type="submit" class="btn btn-info">Confirmar</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                
+                            </div>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+
+{% block contenido %}
+
+{% endblock %}
+<!-- JavaScript Libraries -->
+<script src="{% static 'lib/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'lib/jquery/jquery-migrate.min.js' %}"></script>
+<script src="{% static 'lib/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'lib/easing/easing.min.js' %}"></script>
+<script src="{% static 'lib/mobile-nav/mobile-nav.js' %}"></script>
+<script src="{% static 'lib/wow/wow.min.js' %}"></script>
+<script src="{% static 'lib/waypoints/waypoints.min.js' %}"></script>
+<script src="{% static 'lib/counterup/counterup.min.js' %}"></script>
+<script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
+<script src="{% static 'lib/isotope/isotope.pkgd.min.js' %}"></script>
+<script src="{% static 'lib/lightbox/js/lightbox.min.js' %}"></script>
+<!-- Contact Form JavaScript File -->
+<script src="{% static 'contactform/contactform.js' %}"></script>
+
+<!-- Template Main Javascript File -->
+<script src="{% static 'js/main.js' %}"></script>
+</body>

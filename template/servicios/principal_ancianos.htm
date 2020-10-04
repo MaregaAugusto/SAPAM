@@ -1,0 +1,143 @@
+{% extends 'ancianos/base.htm' %}
+
+{% block contenido %}
+{% load static %}
+<!--==========================
+Intro Section
+============================-->
+<section id="services" class="section-bg">
+    <div class="container">
+
+    <header class="section-header">
+        <h3>Servicios</h3>
+        <h6 class="text-center"><b>¡Haz click sobre el servicio que desea solicitar!</b></h6><br>
+        {% if messages %}
+            {% for message in messages %}
+            <div ALIGN=center class="alert alert-primary" role="alert">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    </header>
+
+    <div class="row">
+
+        <div class="col-md-6 col-lg-4 wow bounceInUp" data-wow-duration="1.4s">
+            <a href="" data-toggle="modal" data-target="#Pago">
+                <div class="box">
+                <div class="icon">
+                    <img src="{% static 'img/servicios/Compras.svg' %}">
+                </div>
+                <h4 class="title">COMPRAS</h4>
+                <p class="description">Solicita ayuda para realizar compras de supermercado y/o farmacias</p>
+                </div>
+            </a>
+                <div class="modal" tabindex="-1" role="dialog" id="Pago">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">COMPRAS</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <form action="" method="post">{%csrf_token%}
+                            <div class="modal-body">
+                                <p>¿Está seguro que quiere solicitar un servicio de compras?</p>
+                                
+                            </div>
+                            <div class="modal-footer">
+                                    <input type="hidden" name="tipo" id="tipo" value="COMPRA">
+                                    
+                                    <button type="submit" class="btn btn-info">Solicitar</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                
+                            </div>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+        </div>
+            
+
+        <div class="col-md-6 col-lg-4 wow bounceInUp" data-wow-duration="1.4s">
+        <a href="" data-toggle="modal" data-target="#Tramite">
+            <div class="box">
+                <div class="icon">
+                <img src="{% static 'img/servicios/Pagos.svg' %}">
+                </div>
+                <h4 class="title">PAGOS</h4>
+                <p class="description">Solicita ayuda para realizar pagos de facturas de cualquier tipo de servicio</p>
+            </div>
+        </a>
+        <div class="modal" tabindex="-1" role="dialog" id="Tramite">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">PAGOS</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="" method="post">{%csrf_token%}
+                    <div class="modal-body">
+                        <p>¿Está seguro que quiere solicitar un servicio de pagos?</p>
+                        
+                    </div>
+                    <div class="modal-footer">
+                            <input type="hidden" name="tipo" id="tipo" value="PAGO">
+                            
+                            <button type="submit" class="btn btn-info">Solicitar</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        
+                    </div>
+                </form>
+                </div>
+            </div>
+        </div>
+        </div>
+        
+
+        <div class="col-md-6 col-lg-4 wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
+        <a href="" data-toggle="modal" data-target="#Compras">
+        <div class="box">
+            <div class="icon">
+                <img src="{% static 'img/servicios/Tramites.svg' %}">
+            </div>
+            <h4 class="title">TRAMITES</h4>
+            <p class="description">Solicita ayuda para realizar trámites y/o sacar turnos</p>
+        </div>
+        </a>
+    <div class="modal" tabindex="-1" role="dialog" id="Compras">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">TRAMITES</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="" method="post">{%csrf_token%}
+                <div class="modal-body">
+                    <p>¿Está seguro que quiere solicitar un servicio de trámites?</p>
+                    
+                </div>
+                <div class="modal-footer">
+                        <input type="hidden" name="tipo" id="tipo" value="TRAMITE">
+                        <button type="submit" class="btn btn-info">Solicitar</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
+
+        </div>
+        
+        </div>
+
+    </div>
+
+    </div>
+</section>
+
+{% endblock %}

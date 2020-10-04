@@ -1,0 +1,26 @@
+{% extends 'colaboradores/base.htm' %}
+{% load crispy_forms_tags %}
+{% block contenido %}
+{% load static %}
+
+<div id="login">
+    <div class="container">
+        <div id="login-row" class="row justify-content-center align-items-center">
+            <div id="login-column" class="col-md-6">
+                <div id="login-box" class="magen col-md-12">
+                    <form id="login-form" class="form" method="POST">{%csrf_token%}
+                        <h4 class="text-center"><b>Actualizar datos</b></h4>
+                            {{form|crispy}}
+                            <div class="text-center">
+                                <input type="submit" name="submit" class="btn btn-info btn-md entrer" value="Modificar">
+                                <input type="reset" name="reset" class="btn btn-info btn-md entrer" value="Cancelar">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

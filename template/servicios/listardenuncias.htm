@@ -1,0 +1,69 @@
+{% extends 'ancianos/base.htm' %}
+
+
+{% block contenido %}
+<section id="services" class="section-bg">
+	<div class="container">
+		<div class="table-responsive">
+			{% if object_list %}
+				<table class="table table-hover">
+					<thead>
+					<tr style="background-color: #065e77; color: white;">
+						<td><b>N°<b></td>
+						<td><b>Asunto</b></td>
+					    <td><b>Estado</b></b>
+					    <td></td>
+					    <td></td>
+					</tr>
+						{% for p in object_list %}
+						<tbody>
+							<tr>
+							<td>{{p.id}}</td>
+							<td>{{p.asunto}}</td>
+							{% if p.estado == True %}
+							<td>Finalizado</td>
+							{% else %}
+							<td>Activo</td>
+							{% endif %}
+							<td></td>
+							<td>
+								<button href="" class="btn btn-info btn-sm" data-toggle="modal" data-target="#A{{p.id}}">Detalles</button>
+							</td>	
+							</tr>
+						</tbody>
+						<div class="modal" tabindex="-1" role="dialog" id="A{{p.id}}">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title">Datos del Reclamos</h5>
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="modal-body">
+                                        <h5>Servicio Realizado</h5>
+                                        <p>Tipo: {{ p.servicio.tipo }}</p>
+                                        <p>Tarea: {{ p.servicio.descripcion }}</p>
+                                        <h5>Reclamo</h5>
+                                        <p>Detalles: {{ p.texto }}</p>
+                                        <h5>Colaborador que realizo el servicio</h5>
+										<p>Nombre: {{ p.servicio.colaborador.usuario.first_name }}</p>
+										<p>Apellido: {{ p.servicio.colaborador.usuario.last_name }}</p>
+                                        <p>Telefono: {{ p.servicio.colaborador.usuario.telefono }}</p>
+                                        
+								</div>
+								<div class="modal-footer">
+										<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+								</div>
+								</div>
+							</div>
+						</div>
+						{% endfor %}
+				</table> 
+			{% else %}
+				<h2 class="text-center"><b>Usted aún no ha solicitado ningún servicio</b></h2>
+			{% endif %}
+		</div>
+	</div>
+</section>
+{% endblock %}

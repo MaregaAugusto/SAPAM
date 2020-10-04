@@ -1,0 +1,2 @@
+en la etiqueta form siempre va esto
+	enctype="multipart/form-data"

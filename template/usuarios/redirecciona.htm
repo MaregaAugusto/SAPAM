@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Redireccionando...</title>
+	{% if user.is_anciano %}
+		<meta http-equiv="Refresh" content="3;url={% url 'servicios:principal_ancianos'%}">
+	{% elif user.is_colaborador %}
+		<meta http-equiv="Refresh" content="3;url={% url 'servicios:listar_ca'%}">	
+	{% endif %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/carga.css' %}">
+
+</head>
+<body>
+	<div class="contenedor_carga">
+		<div class="carga"></div>
+	</div>
+</body>
+</html>

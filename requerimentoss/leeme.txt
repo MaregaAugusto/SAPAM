@@ -1,0 +1,11 @@
+1)primero crear el entorno virtual
+	-virtualenv entornoSAPAM
+2)activa el entorno
+3)crea una carpeta donde contenga el proyecto
+4)ejecutal con el archivo base.txt
+	-pip install -r base.txt
+5)despues crea el proyecto con django
+	-django-admin startproject SAPAM
+6)agragr todas las carpetas (templates, static, media, app, setting)
+7)para crear apps
+	-django-admin startapp nombre_de_la_app

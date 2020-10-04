@@ -1,0 +1,1 @@
+web: gunicorn SAPAM.wsgi --log-file -

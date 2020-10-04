@@ -1,0 +1,70 @@
+{% extends 'ancianos/base.htm' %}
+
+
+{% block contenido %}
+<section id="services" class="section-bg">
+	<div class="container">
+		<div class="table-responsive">
+			{% if object_list %}
+			<h3 class="text-center"><b>SOLICITUDES GENERADAS</b></h3><br>
+				<table class="table table-hover">
+					<thead>
+					<tr style=" background-color: #065e77; color: white;">
+						<td><b>Tipo</b></td>
+						<td><b>Fecha</b></td>
+						<td><b>Estado</b></td>
+						<td><b>Colaborador</b></td>
+						<td></td>
+						<td></td>
+					</tr>
+						{% for p in object_list %}
+						<tbody>
+							<tr>
+							<td>{{p.tipo}}</td>
+							<td>{{p.fecha}}</td>
+							{% if p.estado == True %}
+							<td>Finalizado</td>
+							{% else %}
+							<td>Activo</td>
+							{% endif %}
+							<td>{{p.colaborador.usuario.first_name}}</td>
+							<td>
+								<button href="" class="btn btn-info btn-sm" data-toggle="modal" data-target="#A{{p.id}}">Detalles</button>
+							</td>
+							<td><a href="{% url 'servicios:denuncia' p.id %}" type="button" class="btn btn-danger btn-sm">Reclamos</a></td>
+							</tr>
+						</tbody>
+						<div class="modal" tabindex="-1" role="dialog" id="A{{p.id}}">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+								<div class="modal-header" style=" background-color: #17a2b8; color: white;">
+									<h5 class="modal-title">Datos del Colaborador</h5>
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="modal-body" style=" color: #065e77;">
+										<p><b>Nombre</b>: {{ p.colaborador.usuario.first_name }}</p>
+										<p><b>Apellido</b>: {{ p.colaborador.usuario.last_name }}</p>
+										<p><b>Provincia</b>: {{ p.colaborador.usuario.provincia }}</p>
+										<p><b>Ciudad</b>: {{ p.colaborador.usuario.ciudad }}</p>
+										<p><b>Barrio</b>: {{ p.colaborador.usuario.barrio }}</p>
+										<p><b>Calle</b>: {{ p.colaborador.usuario.calle }}</p>
+										<p><b>Altura</b>: {{ p.colaborador.usuario.altura }}</p>
+										<p><b>Telefono</b>: {{ p.colaborador.usuario.telefono }}</p>
+								</div>
+								<div class="modal-footer">
+										<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+								</div>
+								</div>
+							</div>
+						</div>
+						{% endfor %}
+				</table> 
+			{% else %}
+				<h1 class="text-center">Usted aún no ha solicitado ningún servicio</h1>
+			{% endif %}
+		</div>
+	</div>
+</section>
+{% endblock %}

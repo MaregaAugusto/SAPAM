@@ -1,0 +1,65 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #CEE4F2;
+    height: 100vh;
+}
+
+.regis{
+  font-size: 22px;
+  margin-bottom: 12px;
+}
+
+.olvide{
+  margin-top: 25px;
+  font-size: 12px;
+}
+
+.entrer{
+  font-size: 20px;
+}
+
+ul{
+  display: inline;
+  margin: 0px;
+  padding: 0px;
+}
+
+h4, div laber{
+  color: #413e66;
+}
+
+h4 {
+  background-color: #1bb1dc;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  border-radius: 7px;
+}
+
+.logo{
+  margin-top: 40px;
+}
+
+.magen{
+  margin-bottom: 40px;
+}
+
+.cajita{
+  margin-top: 50px;
+  display: inline-table;
+}
+
+#login .container #login-row #login-column #login-box {
+  margin-top: 40px;
+  margin-bottom: 60px;
+  max-width: 600px;
+  border-radius: 7px;
+  background-color: #fff;
+}
+#login .container #login-row #login-column #login-box #login-form {
+  padding: 20px;
+}
+#login .container #login-row #login-column #login-box #login-form #register-link {
+  margin-top: -85px;
+}

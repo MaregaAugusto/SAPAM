@@ -1,0 +1,60 @@
+*,*:after, *:before{
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: border-box;
+}
+
+.contenedor_carga{
+  background-color: rgba(221,254,255, 0.9);
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  transition: all 1.5s;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carga,
+.carga:before,
+.carga:after
+{
+  height: 2.5em;
+  width: 2.5em;
+  border-radius: 50%;
+  animation: loader 1.5s infinite ease-in-out; 
+}
+
+.carga {
+  color: #4685fa;
+  font-size: 13px;
+  position: relative;
+  animation-delay: -0.16s;
+}
+
+.carga:before,
+.carga:after {
+  content: '';
+  position: absolute;
+  top: 0;
+}
+.carga:before {
+  left: -3.5em;
+  animation-delay: -0.32s;
+} 
+.carga:after {
+  left: 3.5em;
+}
+
+@keyframes loader{
+  0%,
+  80%,
+  100% {
+    box-shadow: 0 2.5em 0 -1.3em;
+  }
+  40% {
+    box-shadow: 0 2.5em 0 0;
+  }
+}
